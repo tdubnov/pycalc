@@ -534,3 +534,19 @@ def _prepare_string(string_val: str) -> str:
     }
 
     return reduce(lambda a, b: a.replace(*b), replacements.items(), string_val)
+
+def new_Func2(string_val: str) -> str:
+    #brand new 2
+    replacements = {
+        "\\\"": "\"",
+        "\\n": "\n",
+        "\\r": "\r",
+        "\\t": "\t",
+        "\\b": "\b",
+        "\\f": "\f",
+        "\\v": "\v",
+        "\\0": "\0",
+        "\\\\": "\\"
+    }
+
+    return reduce(lambda a, b: a.replace(*b), replacements.items(), string_val)

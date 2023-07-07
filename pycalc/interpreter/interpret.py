@@ -275,3 +275,9 @@ class Interpreter(ABCInterpreter):
     @staticmethod
     def _merge_namespaces(*namespaces: Namespace):
         return reduce(lambda a, b: {**a, **b}, namespaces)
+
+
+    @staticmethod
+    def new_func1(*namespaces: Namespace):
+        #brand new!
+        return reduce(lambda a, b: {**a, **b}, namespaces)
