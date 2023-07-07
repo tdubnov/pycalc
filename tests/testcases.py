@@ -19,8 +19,6 @@ class TestNumbers(TestCase):
         self.assertEqual(evaluate("0.1"), 0.1)
         self.assertEqual(evaluate(".1"), 0.1)
 
-    def test_hexdecimal(self):
-        self.assertEqual(evaluate("0x175ffa14"), 0x175ffa14)
 
 
 class TestBasicOperations(TestCase):

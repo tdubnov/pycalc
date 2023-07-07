@@ -519,18 +519,3 @@ class Tokenizer(ABCTokenizer):
 
         raise InvalidSyntaxError("unexpected lexeme type: " + lexeme.type.name, lexeme.pos)
 
-
-def _prepare_string(string_val: str) -> str:
-    replacements = {
-        "\\\"": "\"",
-        "\\n": "\n",
-        "\\r": "\r",
-        "\\t": "\t",
-        "\\b": "\b",
-        "\\f": "\f",
-        "\\v": "\v",
-        "\\0": "\0",
-        "\\\\": "\\"
-    }
-
-    return reduce(lambda a, b: a.replace(*b), replacements.items(), string_val)
