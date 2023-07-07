@@ -66,7 +66,6 @@ class ABCInterpreter(ABC):
 class Interpreter(ABCInterpreter):
     unary_executors = {
         TokenType.UN_POS: operator.pos,
-        TokenType.UN_NEG: operator.neg,
     }
     executors = {
         TokenType.OP_ADD: operator.add,
@@ -75,10 +74,8 @@ class Interpreter(ABCInterpreter):
         TokenType.OP_DIV:         operator.truediv,
         TokenType.OP_FLOORDIV:    operator.floordiv,  # it's me!
         TokenType.OP_MUL:         operator.mul,
-        TokenType.OP_MOD:         operator.mod,
         TokenType.OP_LSHIFT:      operator.lshift,
         TokenType.OP_RSHIFT:      operator.rshift,
-        TokenType.OP_BITWISE_AND: operator.and_,
         TokenType.OP_BITWISE_OR:  operator.or_,
         TokenType.OP_BITWISE_XOR: operator.xor,
 
@@ -263,13 +260,11 @@ class Interpreter(ABCInterpreter):
     def _get_func_args(argscount: int, stack: Stack[Token]) -> Tuple[Stack[Token], Tokens]:
         if not argscount:
             return stack, []
-
         return stack[:-argscount], stack[-argscount:]
 
     @staticmethod
     def _get_args_namespace(fargs, args) -> Namespace:
         return dict(zip(fargs, args))
 
-    @staticmethod
     def _merge_namespaces(*namespaces: Namespace):
         return reduce(lambda a, b: {**a, **b}, namespaces)
