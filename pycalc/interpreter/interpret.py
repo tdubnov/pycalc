@@ -60,6 +60,7 @@ class ABCInterpreter(ABC):
         This namespace will be in the beginning of the namespaces stack
         Returns the last one element in a stack (if multiple left SyntaxError
         will be raised)
+        Edit 1
         """
 
 
@@ -118,7 +119,7 @@ class Interpreter(ABCInterpreter):
     def _interpreter(self, exprs: List[Stack[Token]], namespaces: NamespaceStack) -> Value:
         if not exprs:
             raise NoCodeError
-
+        print("EDIT 2")
         return list(map(lambda expr: self._interpret_line(expr, namespaces), exprs))[-1]
 
     def _interpret_line(self, expression: Stack[Token], namespaces: NamespaceStack) -> Value:
@@ -268,6 +269,7 @@ class Interpreter(ABCInterpreter):
 
     @staticmethod
     def _get_args_namespace(fargs, args) -> Namespace:
+        # edit 3
         return dict(zip(fargs, args))
 
     @staticmethod
