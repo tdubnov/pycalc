@@ -124,8 +124,6 @@ class SortingStationBuilder(ABCBuilder):
                 pos=semicolon_pos
             ))
 
-        return output[:-1]  # remove trailing semicolon
-
     def _count_args(self, tokens: Tokens) -> List[int]:
         result = []
 
